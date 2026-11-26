@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+  <meta name="description" content="Sông Công TV - Truyền hình trực tuyến" />
+  <title>Sông Công TV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#top" aria-label="Sông Công TV trang chủ">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span><b>SÔNG CÔNG</b><small>TELEVISION</small></span>
+      </a>
+      <div class="side-label">KHÁM PHÁ</div>
+      <button class="nav-item active" data-view="all"><span>▦</span> Tất cả kênh</button>
+      <button class="nav-item" data-view="favorites"><span>♡</span> Kênh yêu thích</button>
+      <div class="side-label category-label">DANH MỤC</div>
+      <div id="categoryNav" class="category-nav"><div class="loading-mini">Đang tải danh mục…</div></div>
+      <div class="sidebar-bottom"><span class="live-dot"></span> Truyền hình trực tuyến <small id="channelCount">Đang tải danh sách…</small></div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Mở danh mục">☰</button>
+        <div class="breadcrumb">Sông Công TV <span>/</span> <b id="currentSection">Tất cả kênh</b></div>
+        <div class="top-actions"><span class="status-pill"><i></i> LIVE TV</span><button class="icon-button" id="guideButton" title="Lịch phát sóng">▤</button></div>
+      </header>
+
+      <section class="hero-row">
+        <div><p class="eyebrow">TRẢI NGHIỆM GIẢI TRÍ TRỰC TUYẾN</p><h1>Thế giới truyền hình<br><span>trong tầm tay.</span></h1><p class="hero-sub">Theo dõi các kênh truyền hình yêu thích của bạn.</p></div>
+        <div class="hero-orb"><div class="orb-ring"></div><div class="orb-play">▶</div><span>SONG CONG TV</span></div>
+      </section>
+
+      <section class="player-layout">
+        <div class="player-column">
+          <div class="player-frame" id="playerFrame">
+            <video id="video" controls playsinline crossorigin="anonymous"></video>
+            <div class="player-empty" id="playerEmpty"><div class="big-play">▶</div><b>Chọn một kênh để bắt đầu</b><span>Chương trình sẽ phát tại đây</span></div>
+            <div class="player-error hidden" id="playerError">Không thể phát kênh này. Nguồn có thể đang ngoại tuyến hoặc không hỗ trợ phát trên trình duyệt.</div>
+          </div>
+          <div class="now-playing">
+            <div class="now-logo" id="nowLogo">SC</div>
+            <div class="now-info"><span class="live-label"><i></i> ĐANG PHÁT</span><h2 id="nowTitle">Chưa chọn kênh</h2><p id="nowGroup">Sông Công TV · Truyền hình trực tuyến</p></div>
+            <button class="favorite-main" id="favoriteMain" title="Thêm yêu thích" disabled>♡</button>
+          </div>
+          <div class="player-tools">
+            <label class="quality-control">Chất lượng <select id="qualitySelect" disabled><option value="auto">Tự động</option></select></label>
+            <span class="quality-note" id="qualityNote">Chọn kênh để xem chất lượng khả dụng</span>
+          </div>
+        </div>
+
+        <aside class="channel-panel">
+          <div class="panel-heading"><div><h2>Danh sách kênh</h2><p>Chọn kênh bạn muốn xem</p></div><span class="count-badge" id="visibleCount">0</span></div>
+          <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Tìm kiếm kênh..." autocomplete="off"></div>
+          <div class="filter-row"><button class="filter-chip selected" data-filter="all">Tất cả</button><button class="filter-chip" data-filter="recent">Mới chọn</button><button class="filter-chip" data-filter="favorites">Yêu thích</button></div>
+          <div class="channel-list" id="channelList"><div class="loading-state"><div class="spinner"></div>Đang tải danh sách kênh…</div></div>
+        </aside>
+      </section>
+
+      <section class="guide-section" id="guideSection">
+        <div class="section-heading"><div><p class="eyebrow">ĐỪNG BỎ LỠ</p><h2>Lịch phát sóng</h2><p class="section-desc">Tra cứu lịch chương trình tại các nguồn lịch phát sóng.</p></div></div>
+        <div class="guide-cards">
+          <a class="guide-card" href="https://vtv.vn/" target="_blank" rel="noopener"><span class="guide-icon">VTV</span><span><b>VTV & Vietnam Today</b><small>Lịch và thông tin chương trình trên VTV.vn</small></span><strong>↗</strong></a>
+          <a class="guide-card" href="https://tv360.vn/" target="_blank" rel="noopener"><span class="guide-icon tv360">360</span><span><b>Các kênh còn lại</b><small>Tra cứu chương trình trên TV360.vn</small></span><strong>↗</strong></a>
+        </div>
+        <p class="guide-footnote">Lịch phát sóng mở từ trang của đơn vị cung cấp. Lịch cụ thể có thể thay đổi theo từng kênh và khu vực.</p>
+      </section>
+      <footer>© <span id="year"></span> SÔNG CÔNG TV <span>·</span> Giao diện truyền hình trực tuyến</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
